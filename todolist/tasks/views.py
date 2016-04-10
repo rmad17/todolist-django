@@ -1,7 +1,7 @@
 # from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 import json
-from tasks.dbapi import create_task_object, get_task_all
+from tasks.dbapi import create_task_object, get_task_all, create_tag_bulk
 from django.views.decorators.csrf import csrf_exempt
 # from rest_framework import viewsets
 # from tasks.serializers import TaskSerializer, TagSerializer
@@ -12,7 +12,8 @@ from django.views.decorators.csrf import csrf_exempt
 def create_task(request):
     if request.method == 'POST':
         received_data = json.loads(request.body)
-        create_task_object(received_data['description'])
+        task = create_task_object(received_data['description'])
+        create_tag_bulk(received_data['tags'], task)
         return JsonResponse({'status': 200})
     return HttpResponse(status=403)
 

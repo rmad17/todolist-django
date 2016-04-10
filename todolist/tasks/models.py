@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-from datetime import datetime
+from django.utils import timezone
 from django.db.models import Model, CharField, ForeignKey, DateTimeField, \
     CASCADE
 
@@ -7,7 +7,7 @@ from django.db.models import Model, CharField, ForeignKey, DateTimeField, \
 # Create your models here.
 class Task(Model):
     description = CharField(max_length=512)
-    created_at = DateTimeField(default=datetime.now(), blank=False)
+    created_at = DateTimeField(default=timezone.now(), blank=False)
 
     def __str__(self):              # __unicode__ on Python 2
         return self.description
@@ -23,3 +23,6 @@ class Task(Model):
 class Tag(Model):
     title = CharField(max_length=256)
     task = ForeignKey(Task, on_delete=CASCADE)
+
+    def __str__(self):              # __unicode__ on Python 2
+        return self.title
