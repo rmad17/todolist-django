@@ -33,3 +33,15 @@ def create_tag_bulk(titles, task):
 
 def get_task_all():
     return Task.objects.all()
+
+
+def get_task_all_description():
+    return Task.objects.values_list('description', flat=True)
+
+
+def get_tag_all():
+    return Tag.objects.all()
+
+
+def get_tag_all_name_distinct():
+    return Tag.objects.values_list('title', flat=True).distinct()

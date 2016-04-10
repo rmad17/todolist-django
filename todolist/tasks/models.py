@@ -26,3 +26,7 @@ class Tag(Model):
 
     def __str__(self):              # __unicode__ on Python 2
         return self.title
+
+    def as_json(self):
+        return dict(
+            title=self.title)
