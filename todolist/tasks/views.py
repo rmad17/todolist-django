@@ -1,8 +1,8 @@
 # from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 import json
-from tasks.dbapi import create_task_object, get_task_all_description, \
-    create_tag_bulk, get_tag_all_name_distinct
+from tasks.dbapi import create_task_object, get_task_all, \
+    create_tag_bulk, get_tag_by_task
 from django.views.decorators.csrf import csrf_exempt
 # from rest_framework import viewsets
 # from tasks.serializers import TaskSerializer, TagSerializer
@@ -21,6 +21,9 @@ def create_task(request):
 
 @csrf_exempt
 def get_tasks(request):
-    tasks = list(get_task_all_description())
-    tags = list(get_tag_all_name_distinct())
-    return JsonResponse({'status': 200, 'tasks': tasks, 'tags': tags})
+    tasks = []
+    tasks_objs = get_task_all()
+    for obj in tasks_objs:
+        tags = get_tag_by_task(obj)
+        tasks.append({'task': obj.as_json(), 'task_tags': list(tags)})
+    return JsonResponse({'status': 200, 'tasks': tasks})

@@ -35,6 +35,10 @@ def get_task_all():
     return Task.objects.all()
 
 
+def get_task_by_id(task_id):
+    return Task.objects.filter(id=task_id)
+
+
 def get_task_all_description():
     return Task.objects.values_list('description', flat=True)
 
@@ -45,3 +49,7 @@ def get_tag_all():
 
 def get_tag_all_name_distinct():
     return Tag.objects.values_list('title', flat=True).distinct()
+
+
+def get_tag_by_task(task_obj):
+    return Tag.objects.filter(task=task_obj).values_list('title', flat=True)
