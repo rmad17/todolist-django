@@ -11,7 +11,9 @@
 """
 
 from django.conf.urls import url
-from tasks.views import task_home
+from tasks.views import create_task, get_tasks
+
 urlpatterns = [
-    url(r'^tasks/', task_home),
+    url(r'^task/', create_task),
+    url(r'^get_tasks/', get_tasks),
 ]
