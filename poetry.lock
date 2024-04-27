@@ -24,6 +24,14 @@ typing-extensions = {version = ">=4", markers = "python_version < \"3.11\""}
 tests = ["pytest", "pytest-asyncio", "mypy (>=0.800)"]
 
 [[package]]
+name = "async-timeout"
+version = "4.0.3"
+description = "Timeout context manager for asyncio programs"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
 name = "billiard"
 version = "4.2.0"
 description = "Python multiprocessing fork with improvements and bugfixes"
@@ -235,6 +243,21 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
 six = ">=1.5"
 
 [[package]]
+name = "redis"
+version = "5.0.4"
+description = "Python client for Redis database and key-value store"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+async-timeout = {version = ">=4.0.3", markers = "python_full_version < \"3.11.3\""}
+
+[package.extras]
+hiredis = ["hiredis (>=1.0.0)"]
+ocsp = ["cryptography (>=36.0.1)", "pyopenssl (==20.0.1)", "requests (>=2.26.0)"]
+
+[[package]]
 name = "six"
 version = "1.16.0"
 description = "Python 2 and 3 compatibility utilities"
@@ -300,11 +323,12 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "3cfc0e7f233206351c3212b6ab836a321cf824d799f1a448211285e60275e98e"
+content-hash = "6d2762839f3449d9b50ff2ba81acc5cc16a3c7b552dc4c7567ecd003dee34187"
 
 [metadata.files]
 amqp = []
 asgiref = []
+async-timeout = []
 billiard = []
 celery = []
 click = []
@@ -318,6 +342,7 @@ django-extensions = []
 kombu = []
 prompt-toolkit = []
 python-dateutil = []
+redis = []
 six = []
 sqlparse = []
 typing-extensions = []
