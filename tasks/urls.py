@@ -10,10 +10,10 @@
 
 """
 
-from django.conf.urls import url
+from django.urls import path
 from tasks.views import create_task, get_tasks
 
 urlpatterns = [
-    url(r'^task/', create_task),
-    url(r'^get_tasks/', get_tasks),
+    path('task/', create_task),
+    path('get_tasks/', get_tasks),
 ]
