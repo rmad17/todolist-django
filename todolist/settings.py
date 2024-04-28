@@ -25,7 +25,7 @@ SECRET_KEY = '(^6%*il4*t!)qfhq!)99x1n1updbv74gys9r&#gcrkzz3onr5r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.0.196']
 
 
 # Application definition
@@ -132,4 +132,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
-CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_BROKER_URL = 'redis://192.168.0.196:24508/0'

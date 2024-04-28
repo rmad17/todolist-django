@@ -192,6 +192,24 @@ python-versions = ">=3.6"
 Django = ">=3.2"
 
 [[package]]
+name = "gunicorn"
+version = "22.0.0"
+description = "WSGI HTTP Server for UNIX"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+packaging = "*"
+
+[package.extras]
+eventlet = ["eventlet (>=0.24.1,!=0.36.0)"]
+gevent = ["gevent (>=1.4.0)"]
+setproctitle = ["setproctitle"]
+testing = ["gevent", "eventlet", "coverage", "pytest", "pytest-cov"]
+tornado = ["tornado (>=0.2)"]
+
+[[package]]
 name = "kombu"
 version = "5.3.7"
 description = "Messaging library for Python."
@@ -219,6 +237,14 @@ sqlalchemy = ["sqlalchemy (>=1.4.48,<2.1)"]
 sqs = ["boto3 (>=1.26.143)", "urllib3 (>=1.26.16)", "pycurl (>=7.43.0.5)"]
 yaml = ["PyYAML (>=3.10)"]
 zookeeper = ["kazoo (>=2.8.0)"]
+
+[[package]]
+name = "packaging"
+version = "24.0"
+description = "Core utilities for Python packages"
+category = "main"
+optional = false
+python-versions = ">=3.7"
 
 [[package]]
 name = "prompt-toolkit"
@@ -323,7 +349,7 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "6d2762839f3449d9b50ff2ba81acc5cc16a3c7b552dc4c7567ecd003dee34187"
+content-hash = "ddbd60e6d68e2991cacc67db244f71ea7948dbb5f81cab8af7ba323d57c3dabc"
 
 [metadata.files]
 amqp = []
@@ -339,7 +365,9 @@ colorama = []
 django = []
 django-cors-headers = []
 django-extensions = []
+gunicorn = []
 kombu = []
+packaging = []
 prompt-toolkit = []
 python-dateutil = []
 redis = []
